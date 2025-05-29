@@ -1,0 +1,154 @@
+<div class="container my-4 flight-booking-container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <!-- Loading Spinner -->
+      <div *ngIf="isLoading" class="text-center mb-4">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="alert alert-danger mb-4">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Flight Details Card -->
+      <div *ngIf="flight" class="card flight-details-card shadow-sm mb-4 animated-card">
+        <div class="card-header bg-gradient">
+          <h5 class="card-title text-center flight-info-header">Flight Information</h5>
+        </div>
+        <div class="card-body position-relative">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="text-primary"><strong>Flight Number</strong></p>
+              <p class="text-large">{{ flight?.flightNumber }}</p>
+            </div>
+            <div class="col-md-6 text-end">
+              <p class="text-success"><strong>Price per person</strong></p>
+              <p class="text-large">₹{{ flight?.price }}</p>
+            </div>
+          </div>
+
+          <!-- From Location -->
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <p class="text-primary"><strong>From</strong></p>
+              <p class="text-large">{{ flight?.departureCity }}</p>
+              <p class="text-muted"><strong>Departure Time</strong></p>
+              <p class="text-large">{{ flight?.departureTime }}</p>
+            </div>
+
+            <!-- To Location -->
+            <div class="col-md-6 text-end">
+              <p class="text-danger"><strong>To</strong></p>
+              <p class="text-large">{{ flight?.destinationCity }}</p>
+              <p class="text-muted"><strong>Arrival Time</strong></p>
+              <p class="text-large">{{ flight?.arrivalTime }}</p>
+            </div>
+          </div>
+
+          <div class="flight-path-container mt-4">
+            <!-- Flight Path -->
+            <div class="flight-path"></div>
+            <!-- Flight Icon -->
+            <img src="./assets/flighticon.svg" alt="Flight Icon" class="flight-icon" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Booking Information Card -->
+      <div class="card booking-info-card shadow-sm mb-4 animated-card">
+        <div class="card-header bg-gradient">
+          <h5 class="card-title text-center">Booking Information</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <label class="form-label text-primary">First Name</label>
+                <input type="text" class="form-control" formControlName="firstName" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label text-primary">Last Name</label>
+                <input type="text" class="form-control" formControlName="lastName" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label text-primary">Email</label>
+                <input type="email" class="form-control" formControlName="email" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label text-primary">Phone</label>
+                <input type="tel" class="form-control" formControlName="phone" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label text-primary">Departure Date</label>
+                <input type="date" class="form-control" formControlName="departureDate" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label text-primary">Number of Passengers</label>
+                <input type="number" class="form-control" formControlName="passengers" min="1" />
+              </div>
+              <div class="col-12">
+                <label class="form-label text-primary">Special Requests</label>
+                <textarea class="form-control" formControlName="specialRequests" rows="3"></textarea>
+              </div>
+              <div class="col-12">
+                <h4 class="text-warning">Total Price: ₹{{ calculateTotalPrice() }}</h4>
+              </div>
+              <div class="col-12 text-end">
+                <button type="submit" class="btn btn-gradient btn-lg" [disabled]="bookingForm.invalid || isLoading">
+                  Proceed to Payment
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Confirmation Popup -->
+      <div *ngIf="showConfirmationPopup" class="modal d-block animated-popup" tabindex="-1" role="dialog">
+        <div class="modal-backdrop show"></div>
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-gradient">
+              <h5 class="modal-title text-white">Confirm Flight Booking</h5>
+              <button type="button" class="btn-close text-white" (click)="closePopup()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <th class="text-success">From</th>
+                    <td>{{ flight?.departureCity }}</td>
+                  </tr>
+                  <tr>
+                    <th class="text-danger">To</th>
+                    <td>{{ flight?.destinationCity }}</td>
+                  </tr>
+                  <tr>
+                    <th class="text-info">Date</th>
+                    <td>{{ bookingDetails?.departureDate | date }}</td>
+                  </tr>
+                  <tr>
+                    <th class="text-warning">Passengers</th>
+                    <td>{{ bookingDetails?.passengers }}</td>
+                  </tr>
+                  <tr>
+                    <th class="text-primary">Total Price</th>
+                    <td>₹{{ bookingDetails?.totalPrice }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-lg" (click)="closePopup()">Cancel</button>
+              <a *ngIf="bookingDetails?.sessionUrl" [href]="bookingDetails?.sessionUrl" target="_blank" class="btn btn-gradient btn-lg">Pay Now</a>
+              <button *ngIf="!bookingDetails?.sessionUrl" type="button" class="btn btn-gradient btn-lg" (click)="confirmBooking()">Confirm & Pay</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

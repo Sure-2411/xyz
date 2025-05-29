@@ -1,0 +1,598 @@
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #dee2e6;
+}
+
+footer a {
+  margin: 0 5px;
+}
+
+footer {
+  border-top: 3px solid #0d6efd;
+}
+
+.card {
+  border-radius: 8px;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  animation: cardFadeIn 1s ease-in-out;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.card-header.bg-gradient {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  padding: 1.5rem;
+  font-size: 1.75rem; /* Increased font size for the header */
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  background-color: #f8f9fa;
+}
+
+.card-body {
+  padding: 30px; /* Increased padding for better spacing */
+  position: relative;
+  height: 250px; /* Increased height to utilize space */
+}
+
+h5 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.text-muted {
+  font-size: 0.9rem;
+}
+
+.list-unstyled {
+  margin: 0;
+  padding: 0;
+}
+
+.list-unstyled li {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.list-unstyled li:last-child {
+  margin-bottom: 0;
+}
+
+.border-top {
+  border-top: 1px solid #dee2e6;
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+/* Itinerary Card */
+.itinerary-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.airline-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.location {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.time {
+  font-size: 1.25rem; /* Increased font size for time */
+  color: #9e9e9e; /* Changed to gray for a subtle look */
+  margin-top: 5px; /* Added spacing below the location */
+}
+
+/* Flight Animation Container */
+.flight-animation-container {
+  position: relative;
+  height: 100px;
+  margin-top: 30px;
+}
+
+.flight-path {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.flight-icon {
+  width: 40px; /* Increased size of the flight icon */
+  height: 40px;
+  position: absolute;
+  top: -20px; /* Centered the icon vertically */
+  left: 0;
+  offset-path: path("M0,50 L100,50");
+  offset-rotate: auto;
+  animation: flightMove 5s linear infinite;
+}
+
+@keyframes followPath {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flightStraightLine {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes flightMove {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: calc(100% - 50px); /* Adjusted to match the new icon size */
+  }
+}
+
+.flight-booking-container {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.gradient-header {
+  background: linear-gradient(135deg, #7f00ff, #e100ff);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.city-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.city h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.temperature {
+  font-size: 1.2rem;
+  margin: 0.5rem 0 0;
+}
+
+.arrow {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.trip-type {
+  margin-top: 1rem;
+}
+
+.trip-button {
+  background: white;
+  color: #7f00ff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.trip-button.active {
+  background: #e100ff;
+  color: white;
+}
+
+.booking-form-container {
+  background: white;
+  color: black;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem; /* Added more spacing between fields */
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-submit {
+  background: #7f00ff;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+}
+
+.btn-submit:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* From and To Locations */
+.from-location,
+.to-location {
+  position: absolute;
+  bottom: 20px; /* Added spacing from the bottom */
+  font-weight: bold;
+  font-size: 1.5rem; /* Increased font size */
+}
+
+.from-location {
+  left: 0; /* Align to the left */
+  color: #2196f3; /* Changed to blue for better visibility */
+}
+
+.to-location {
+  right: 0; /* Align to the right */
+  text-align: right;
+  color: #f44336; /* Changed to red for better visibility */
+}
+
+/* Flight Path Container */
+.flight-path-container {
+  position: relative;
+  width: 100%;
+  height: 50px; /* Adjusted height for better visibility */
+  background: transparent;
+  margin-top: 20px;
+}
+
+.dotted-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  border-top: 2px dotted #007bff; /* Dotted line */
+}
+
+/* Flight Path */
+.flight-path {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #007bff; /* Blue line for the flight path */
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.flight-icon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: -20px; /* Center the icon vertically over the path */
+  left: 0; /* Start from the left */
+  animation: flightMove 5s linear infinite; /* Smooth animation */
+}
+
+/* Flight Icon Animation */
+@keyframes flightMove {
+  0% {
+    transform: translateX(0); /* Start at the left */
+  }
+  100% {
+    transform: translateX(calc(100% - 40px)); /* Move to the right end */
+  }
+}
+
+/* Flight Details Card */
+.flight-details-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Flight Details */
+.row.mt-4 p {
+  font-size: 1.25rem; /* Increased font size for flight details */
+  margin-bottom: 10px; /* Added spacing between details */
+}
+
+.row.mt-4 p strong {
+  font-size: 1.3rem; /* Increased font size for labels */
+}
+
+/* Flight Details Title */
+.flight-details-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff; /* Bold blue color */
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+/* Flight Information Header */
+.flight-info-header {
+  font-size: 2rem; /* Increased font size */
+  font-weight: bold;
+  color: #4caf50; /* Changed to green for better contrast */
+  text-transform: uppercase;
+  letter-spacing: 1px; /* Added spacing between letters */
+}
+
+/* Booking Information Card */
+.booking-info-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.booking-info-card .card-header {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #ffeb3b; /* Changed to yellow for better visibility */
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase; /* Added uppercase for emphasis */
+}
+
+.booking-info-card .card-body {
+  padding: 2rem;
+  min-height: 500px; /* Increased height to accommodate all fields */
+}
+
+.form-label {
+  font-weight: bold;
+  color: #4caf50; /* Changed to green for better readability */
+}
+
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  padding: 0.75rem; /* Adjusted padding for better visibility */
+  font-size: 1rem;
+}
+
+.total-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff5722; /* Changed to orange for emphasis */
+  margin-top: 1rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Form Floating Labels */
+.form-floating {
+  position: relative;
+}
+
+.form-floating input,
+.form-floating textarea {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.form-floating label {
+  position: absolute;
+  top: 0.75rem;
+  left: 1rem;
+  font-size: 0.9rem;
+  color: #757575; /* Changed to dark gray for better readability */
+  transition: all 0.2s ease-in-out;
+}
+
+.form-floating input:focus + label,
+.form-floating textarea:focus + label {
+  top: -0.5rem;
+  left: 0.75rem;
+  font-size: 0.8rem;
+  color: #673ab7; /* Changed to purple for focus state */
+}
+
+.form-floating input:focus,
+.form-floating textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Total Price */
+.total-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff9800; /* Changed to orange for emphasis */
+  margin-top: 1rem;
+}
+
+/* Gradient Button */
+.btn-gradient {
+  background: linear-gradient(135deg, #673ab7, #9c27b0); /* Changed to purple gradient */
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #9c27b0, #673ab7); /* Reversed gradient on hover */
+  box-shadow: 0 4px 10px rgba(103, 58, 183, 0.5);
+}
+
+/* Modal Header */
+.modal-header.bg-gradient {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  padding: 1rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Modal Table */
+.table {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+.table th {
+  font-weight: bold;
+  text-align: left;
+  width: 40%;
+}
+
+.table td {
+  text-align: left;
+  color: #333;
+}
+
+/* Modal Footer Buttons */
+.modal-footer .btn {
+  min-width: 160px; /* Increased button size */
+  font-size: 1.2rem; /* Slightly larger font size */
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Bright gradient */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #feb47b, #ff7e5f); /* Reversed gradient on hover */
+  box-shadow: 0 4px 10px rgba(255, 126, 95, 0.5);
+}
+
+/* Modal Animation */
+.animated-popup {
+  animation: fadeInPopup 0.5s ease-in-out;
+}
+
+@keyframes fadeInPopup {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Modal Content */
+.modal-content {
+  padding: 2rem;
+  border-radius: 12px;
+  max-height: 90vh; /* Ensure the modal doesn't exceed the viewport height */
+  overflow-y: auto; /* Add scroll if content overflows */
+}
+
+/* Modal Footer */
+.modal-footer {
+  display: flex;
+  justify-content: space-between; /* Ensure buttons are spaced properly */
+  align-items: center;
+  padding-top: 1.5rem;
+}
+
+/* Buttons in Modal Footer */
+.modal-footer .btn {
+  min-width: 140px; /* Ensure buttons are large enough */
+  font-size: 1.1rem; /* Slightly larger font size */
+  font-weight: bold;
+}
+
+/* Modal Dialog */
+.modal-dialog {
+  max-width: 900px; /* Increased width for better visibility */
+  margin: 2rem auto; /* Added more vertical spacing */
+}
+
+.modal-dialog-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal Backdrop */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1040; /* Ensure it appears behind the modal */
+}
