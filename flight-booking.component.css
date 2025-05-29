@@ -1,598 +1,495 @@
-.card-title {
-  font-size: 1.25rem;
-  font-weight: 600;
+/* Base styles */
+.flight-booking-container {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 2rem 0;
 }
 
-.card-img-top {
-  height: 200px;
-  object-fit: cover;
-  border-bottom: 1px solid #dee2e6;
-}
-
-footer a {
-  margin: 0 5px;
-}
-
-footer {
-  border-top: 3px solid #0d6efd;
-}
-
+/* Card Enhancements */
 .card {
-  border-radius: 8px;
+  border-radius: 20px;
   border: none;
-  background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  animation: cardFadeIn 1s ease-in-out;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+  margin-bottom: 2rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  animation: cardFadeIn 0.8s ease-out;
+  overflow: hidden;
+  position: relative;
 }
 
-.card-header {
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #dee2e6;
-  font-weight: bold;
-  font-size: 1.25rem;
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s;
 }
 
-.card-header.bg-gradient {
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  color: white;
-  padding: 1.5rem;
-  font-size: 1.75rem; /* Increased font size for the header */
+.card:hover::before {
+  left: 100%;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-  background-color: #f8f9fa;
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Card Headers */
+.card-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: shimmer 4s infinite;
+}
+
+.card-header.bg-gradient {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ffa726 50%, #42a5f5 100%);
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: rgb(40, 39, 39);
+  text-transform: uppercase;
+}
+
+/* Flight Details Card Enhancements */
+.flight-details-card {
+  border-radius: 24px;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .card-body {
-  padding: 30px; /* Increased padding for better spacing */
+  padding: 3rem;
   position: relative;
-  height: 250px; /* Increased height to utilize space */
+  min-height: 300px;
 }
 
-h5 {
-  font-size: 1.25rem;
-  font-weight: bold;
+/* Text Enhancements */
+.text-large {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
-h6 {
-  font-size: 1rem;
-  font-weight: bold;
+.text-primary {
+  color: #667eea !important;
+  font-weight: 600;
+}
+
+.text-success {
+  color: #51cf66 !important;
+  font-weight: 600;
+}
+
+.text-danger {
+  color: #ff6b6b !important;
+  font-weight: 600;
+}
+
+.text-warning {
+  color: #ffa726 !important;
+  font-weight: 700;
+  font-size: 1.6rem;
+  text-shadow: 0 2px 4px rgba(255, 167, 38, 0.3);
 }
 
 .text-muted {
-  font-size: 0.9rem;
-}
-
-.list-unstyled {
-  margin: 0;
-  padding: 0;
-}
-
-.list-unstyled li {
+  color: #6c757d !important;
   font-size: 0.95rem;
-  margin-bottom: 10px;
 }
 
-.list-unstyled li:last-child {
-  margin-bottom: 0;
-}
-
-.border-top {
-  border-top: 1px solid #dee2e6;
-}
-
-.fw-bold {
-  font-weight: bold;
-}
-
-/* Itinerary Card */
-.itinerary-card {
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-}
-
-.airline-name {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.location {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.time {
-  font-size: 1.25rem; /* Increased font size for time */
-  color: #9e9e9e; /* Changed to gray for a subtle look */
-  margin-top: 5px; /* Added spacing below the location */
-}
-
-/* Flight Animation Container */
-.flight-animation-container {
-  position: relative;
-  height: 100px;
-  margin-top: 30px;
-}
-
-.flight-path {
-  width: 100%;
-  height: 100px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.flight-icon {
-  width: 40px; /* Increased size of the flight icon */
-  height: 40px;
-  position: absolute;
-  top: -20px; /* Centered the icon vertically */
-  left: 0;
-  offset-path: path("M0,50 L100,50");
-  offset-rotate: auto;
-  animation: flightMove 5s linear infinite;
-}
-
-@keyframes followPath {
-  0% {
-    offset-distance: 0%;
-  }
-  100% {
-    offset-distance: 100%;
-  }
-}
-
-@keyframes cardFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes flightStraightLine {
-  0% {
-    left: 0;
-  }
-  100% {
-    left: 100%;
-  }
-}
-
-@keyframes flightMove {
-  0% {
-    left: 0;
-  }
-  100% {
-    left: calc(100% - 50px); /* Adjusted to match the new icon size */
-  }
-}
-
-.flight-booking-container {
-  font-family: Arial, sans-serif;
-  color: #333;
-}
-
-.gradient-header {
-  background: linear-gradient(135deg, #7f00ff, #e100ff);
-  padding: 2rem;
-  border-radius: 15px;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.city-info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-}
-
-.city h1 {
-  font-size: 2rem;
-  margin: 0;
-}
-
-.temperature {
-  font-size: 1.2rem;
-  margin: 0.5rem 0 0;
-}
-
-.arrow {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.trip-type {
-  margin-top: 1rem;
-}
-
-.trip-button {
-  background: white;
-  color: #7f00ff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  margin: 0 0.5rem;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.trip-button.active {
-  background: #e100ff;
-  color: white;
-}
-
-.booking-form-container {
-  background: white;
-  color: black;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-  margin-bottom: 1.5rem; /* Added more spacing between fields */
-}
-
-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-
-input {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.btn-submit {
-  background: #7f00ff;
-  color: white;
-  border: none;
-  padding: 0.7rem 1.5rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  width: 100%;
-}
-
-.btn-submit:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
-
-/* From and To Locations */
-.from-location,
-.to-location {
-  position: absolute;
-  bottom: 20px; /* Added spacing from the bottom */
-  font-weight: bold;
-  font-size: 1.5rem; /* Increased font size */
-}
-
-.from-location {
-  left: 0; /* Align to the left */
-  color: #2196f3; /* Changed to blue for better visibility */
-}
-
-.to-location {
-  right: 0; /* Align to the right */
-  text-align: right;
-  color: #f44336; /* Changed to red for better visibility */
-}
-
-/* Flight Path Container */
+/* Flight Path Animation */
 .flight-path-container {
   position: relative;
   width: 100%;
-  height: 50px; /* Adjusted height for better visibility */
-  background: transparent;
-  margin-top: 20px;
+  height: 80px;
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.dotted-line {
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  border-top: 2px dotted #007bff; /* Dotted line */
-}
-
-/* Flight Path */
 .flight-path {
   position: absolute;
   width: 100%;
-  height: 2px;
-  background: #007bff; /* Blue line for the flight path */
+  height: 3px;
+  background: linear-gradient(90deg, #667eea 0%, #42a5f5 50%, #51cf66 100%);
+  border-radius: 2px;
   top: 50%;
-  left: 0;
   transform: translateY(-50%);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+  animation: pathGlow 2s ease-in-out infinite alternate;
 }
 
 .flight-icon {
   position: absolute;
-  width: 40px;
-  height: 40px;
-  top: -20px; /* Center the icon vertically over the path */
-  left: 0; /* Start from the left */
-  animation: flightMove 5s linear infinite; /* Smooth animation */
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  animation: flightMove 6s linear infinite;
+  z-index: 2;
 }
 
-/* Flight Icon Animation */
-@keyframes flightMove {
-  0% {
-    transform: translateX(0); /* Start at the left */
-  }
-  100% {
-    transform: translateX(calc(100% - 40px)); /* Move to the right end */
-  }
-}
-
-/* Flight Details Card */
-.flight-details-card {
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Flight Details */
-.row.mt-4 p {
-  font-size: 1.25rem; /* Increased font size for flight details */
-  margin-bottom: 10px; /* Added spacing between details */
-}
-
-.row.mt-4 p strong {
-  font-size: 1.3rem; /* Increased font size for labels */
-}
-
-/* Flight Details Title */
-.flight-details-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #007bff; /* Bold blue color */
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-}
-
-/* Flight Information Header */
-.flight-info-header {
-  font-size: 2rem; /* Increased font size */
-  font-weight: bold;
-  color: #4caf50; /* Changed to green for better contrast */
-  text-transform: uppercase;
-  letter-spacing: 1px; /* Added spacing between letters */
-}
-
-/* Booking Information Card */
+/* Form Enhancements */
 .booking-info-card {
-  border-radius: 8px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
 }
 
 .booking-info-card .card-header {
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  color: #ffeb3b; /* Changed to yellow for better visibility */
-  padding: 1.5rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  text-transform: uppercase; /* Added uppercase for emphasis */
-}
-
-.booking-info-card .card-body {
-  padding: 2rem;
-  min-height: 500px; /* Increased height to accommodate all fields */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .form-label {
-  font-weight: bold;
-  color: #4caf50; /* Changed to green for better readability */
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
 }
 
 .form-control {
-  border-radius: 5px;
-  border: 1px solid #ced4da;
-  padding: 0.75rem; /* Adjusted padding for better visibility */
+  border-radius: 12px;
+  border: 2px solid #e9ecef;
+  padding: 1rem;
   font-size: 1rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
 }
 
-.total-price {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #ff5722; /* Changed to orange for emphasis */
-  margin-top: 1rem;
+.form-control:focus {
+  border-color: #667eea;
+  box-shadow: 
+    0 0 0 3px rgba(102, 126, 234, 0.1),
+    0 8px 25px rgba(102, 126, 234, 0.15);
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
 }
 
-.btn-primary {
-  background-color: #007bff;
+/* Button Enhancements */
+.btn-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
   border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
+.btn-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
 }
 
-/* Form Floating Labels */
-.form-floating {
+.btn-gradient:hover::before {
+  left: 100%;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+}
+
+.btn-gradient:disabled {
+  background: linear-gradient(135deg, #6c757d 0%, #adb5bd 100%);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Modal Enhancements */
+.modal-content {
+  border-radius: 24px;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.modal-header.bg-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border: none;
   position: relative;
 }
 
-.form-floating input,
-.form-floating textarea {
-  border-radius: 8px;
-  border: 1px solid #ced4da;
-  padding: 1rem;
-  font-size: 1rem;
-}
-
-.form-floating label {
+.modal-header.bg-gradient::before {
+  content: '';
   position: absolute;
-  top: 0.75rem;
-  left: 1rem;
-  font-size: 0.9rem;
-  color: #757575; /* Changed to dark gray for better readability */
-  transition: all 0.2s ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
 }
 
-.form-floating input:focus + label,
-.form-floating textarea:focus + label {
-  top: -0.5rem;
-  left: 0.75rem;
-  font-size: 0.8rem;
-  color: #673ab7; /* Changed to purple for focus state */
+.modal-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.form-floating input:focus,
-.form-floating textarea:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+.modal-body {
+  padding: 2.5rem;
 }
 
-/* Total Price */
-.total-price {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #ff9800; /* Changed to orange for emphasis */
-  margin-top: 1rem;
-}
-
-/* Gradient Button */
-.btn-gradient {
-  background: linear-gradient(135deg, #673ab7, #9c27b0); /* Changed to purple gradient */
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 8px;
-  transition: all 0.3s ease-in-out;
-}
-
-.btn-gradient:hover {
-  background: linear-gradient(135deg, #9c27b0, #673ab7); /* Reversed gradient on hover */
-  box-shadow: 0 4px 10px rgba(103, 58, 183, 0.5);
-}
-
-/* Modal Header */
-.modal-header.bg-gradient {
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  color: white;
-  padding: 1rem;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-
-/* Modal Table */
 .table {
-  margin-bottom: 0;
-  font-size: 1rem;
+  margin: 0;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 .table th {
-  font-weight: bold;
-  text-align: left;
-  width: 40%;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #495057;
+  font-weight: 700;
+  padding: 1.25rem;
+  border: none;
+  font-size: 1rem;
 }
 
 .table td {
-  text-align: left;
-  color: #333;
+  padding: 1.25rem;
+  border-top: 1px solid #dee2e6;
+  color: #495057;
+  font-weight: 500;
+  font-size: 1.1rem;
 }
 
-/* Modal Footer Buttons */
+.table-striped tbody tr:nth-of-type(odd) {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgba(118, 75, 162, 0.03) 100%);
+}
+
+.modal-footer {
+  padding: 2rem 2.5rem;
+  border: none;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
 .modal-footer .btn {
-  min-width: 160px; /* Increased button size */
-  font-size: 1.2rem; /* Slightly larger font size */
-  font-weight: bold;
-  padding: 0.75rem 1.5rem;
+  min-width: 160px;
+  margin: 0 0.5rem;
 }
 
-.btn-gradient {
-  background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Bright gradient */
+.btn-secondary {
+  background: linear-gradient(135deg, #6c757d 0%, #adb5bd 100%);
   color: white;
   border: none;
-  border-radius: 8px;
-  transition: all 0.3s ease-in-out;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
 }
 
-.btn-gradient:hover {
-  background: linear-gradient(135deg, #feb47b, #ff7e5f); /* Reversed gradient on hover */
-  box-shadow: 0 4px 10px rgba(255, 126, 95, 0.5);
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #5a6268 0%, #95a5a6 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(108, 117, 125, 0.3);
 }
 
-/* Modal Animation */
-.animated-popup {
-  animation: fadeInPopup 0.5s ease-in-out;
+/* Loading Spinner Enhancement */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.3em;
+  animation: spinner-border 0.75s linear infinite, rainbow 2s linear infinite;
+}
+
+/* Alert Enhancements */
+.alert {
+  border-radius: 16px;
+  border: none;
+  padding: 1.5rem;
+  font-weight: 500;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.alert-danger {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8a80 100%);
+  color: white;
+}
+
+/* Animations */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes flightMove {
+  0% {
+    transform: translateY(-50%) translateX(0);
+  }
+  100% {
+    transform: translateY(-50%) translateX(calc(100vw - 200px));
+  }
+}
+
+@keyframes pathGlow {
+  0% {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.8);
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 @keyframes fadeInPopup {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.8) translateY(20px);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translateY(0);
   }
 }
 
-/* Modal Content */
-.modal-content {
-  padding: 2rem;
-  border-radius: 12px;
-  max-height: 90vh; /* Ensure the modal doesn't exceed the viewport height */
-  overflow-y: auto; /* Add scroll if content overflows */
+@keyframes rainbow {
+  0% { border-top-color: #ff6b6b; }
+  16.66% { border-top-color: #ffa726; }
+  33.33% { border-top-color: #ffeb3b; }
+  50% { border-top-color: #51cf66; }
+  66.66% { border-top-color: #42a5f5; }
+  83.33% { border-top-color: #ab47bc; }
+  100% { border-top-color: #ff6b6b; }
 }
 
-/* Modal Footer */
-.modal-footer {
-  display: flex;
-  justify-content: space-between; /* Ensure buttons are spaced properly */
-  align-items: center;
-  padding-top: 1.5rem;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .flight-booking-container {
+    padding: 1rem 0;
+  }
+  
+  .card-body {
+    padding: 2rem;
+  }
+  
+  .modal-dialog {
+    margin: 1rem;
+    max-width: calc(100% - 2rem);
+  }
+  
+  .btn-gradient {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
 }
 
-/* Buttons in Modal Footer */
-.modal-footer .btn {
-  min-width: 140px; /* Ensure buttons are large enough */
-  font-size: 1.1rem; /* Slightly larger font size */
-  font-weight: bold;
+/* Accessibility Enhancements */
+.card:focus-within {
+  outline: 3px solid rgba(102, 126, 234, 0.5);
+  outline-offset: 2px;
 }
 
-/* Modal Dialog */
-.modal-dialog {
-  max-width: 900px; /* Increased width for better visibility */
-  margin: 2rem auto; /* Added more vertical spacing */
+.btn:focus {
+  outline: 3px solid rgba(102, 126, 234, 0.5);
+  outline-offset: 2px;
 }
 
-.modal-dialog-centered {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Additional Visual Polish */
+.animated-card {
+  animation-delay: 0.1s;
 }
 
-/* Modal Backdrop */
-.modal-backdrop {
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  z-index: 1040; /* Ensure it appears behind the modal */
+.animated-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.animated-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.animated-popup {
+  animation: fadeInPopup 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
 }
