@@ -108,7 +108,7 @@
 
       <!-- Confirmation Popup -->
       <div *ngIf="showConfirmationPopup" class="modal d-block animated-popup" tabindex="-1" role="dialog">
-        <div class="modal-backdrop show"></div>
+        <div class="modal-backdrop show" (click)="closePopup()"></div>
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header bg-gradient">
